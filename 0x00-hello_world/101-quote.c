@@ -2,11 +2,9 @@
 #include <unistd.h>
 
 /**
- * main - print quote
+ * main - Prints quote to the standard error
  *
- * Description: prints Dora's quote
- *
- * Return: Always 1 (Success)
+ * Return: one 1 (Success)
  */
 
 int main(void)
