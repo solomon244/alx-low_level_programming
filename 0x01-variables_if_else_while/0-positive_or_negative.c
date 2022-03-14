@@ -2,8 +2,8 @@
 #include <time.h>
 #include <stdio.h>
 /**
- *main -Entry point
- *Return:Always 0(Sucess)
+ *main - Positive or Negative - print sign of random number
+ *Return: 0 for success
 */
 int main(void)
 {
