@@ -10,18 +10,15 @@
 */
 int main(void)
 {
-	int num = 48;
-
-	while (num < 58)
-	{
-		putchar(num);
-		if (num < 57)
-		{
-			putchar(',');
-			putchar(' ');
-		}
-		num++;
-	}
-	putchar('\n');
-	return (0);
+char x;
+for (x = '0'; x <= '9'; x++)
+{
+putchar(x);
+}
+for (x = 'a'; x < 'g'; x++)
+{
+putchar(x);
+}
+putchar('\n');
+return (0);
 }
