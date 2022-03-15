@@ -5,19 +5,15 @@
  *
  * Return: void
  */ 
-
 void print_alphabet(void)
 {
+	char letter;
 
-	char i;
+	for (letter = 'a'; letter <= 'z'; letter++)
+		_putchar(letter);
 
-	for (i = 'a'; i <= 'z'; i++)
-	{
-		_putchar(i);
-	}
 	_putchar('\n');
 }
-~
 ~
 ~
 ~
