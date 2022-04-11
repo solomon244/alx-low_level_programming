@@ -1,52 +1,75 @@
 #include "dog.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 /**
- * new_dog - creates a new dog.
- * @name: name of the dog.
- * @age: age of the dog.
- * @owner: owner of the dog.
- *
- * Return: struct dog.
- * if fails, returns NULL.
+ * _strdup - returns a pointer to a newly allocated space in memory
+ * @str: string
+ * Return: pointer to newly allocated space in memory
  */
+
+char *_strdup(char *str)
+{
+	int length, i;
+	char *arr;
+
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+
+	length = 0;
+	while (*(str + length) != '\0')
+	{
+		length++;
+	}
+
+	arr = (char*) malloc(length * sizeof(char) + 1);
+	if (arr == NULL)
+		return (NULL);
+
+	for (i = 0; i < length; i++)
+	{
+		arr[i] = str[i];
+	}
+	arr[i] = '\0';
+
+	return (arr);
+}
+
+/**
+ * new_dog - creates a new dog
+ * @name: dog's name
+ * @age: dog's age
+ * @owner: dog's owner
+ * Return: new_dog (dog_t)
+ */
+
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	dog_t *p_dog;
-	int i, dog_name, dog_owner;
+	dog_t *dog;
+	char *dog_name, *dog_owner;
 
-	p_dog = malloc(sizeof(*p_dog));
-	if (p_dog == NULL || !(name) || !(owner))
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
+
+	dog_name = _strdup(name);
+	if (dog_name == NULL)
 	{
-		free(p_dog);
+		free(dog);
 		return (NULL);
 	}
 
-	for (dog_name = 0; name[dog_name]; dog_name++);
-
-	for (dog_owner = 0; owner[dog_owner]; dog_owner++)
-		;
-
-	p_dog->name = malloc(dog_name + 1);
-	p_dog->owner = malloc(dog_owner + 1);
-
-	if (!(p_dog->name) || !(p_dog->owner))
+	dog_owner = _strdup(owner);
+	if (dog_owner == NULL)
 	{
-		free(p_dog->owner);
-		free(p_dog->name);
-		free(p_dog);
+		free(dog_name);
+		free(dog);
 		return (NULL);
 	}
-
-	for (i = 0; i < dog_name; i++)
-		p_dog->name[i] = name[i];
-	p_dog->name[i] = '\0';
-
-	p_dog->age = age;
-
-	for (i = 0; i < dog_owner; i++)
-		p_dog->owner[i] = owner[i];
-	p_dog->owner[i] = '\0';
-
-	return (p_dog);
+	dog->name = dog_name;
+	dog->age = age;
+	dog->owner = dog_owner;
+	return (dog);
 }
